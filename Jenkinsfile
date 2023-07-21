@@ -1,6 +1,8 @@
 pipeline{
     agent any
-
+    tools {
+        maven 'maven'
+    }
     stages{
 
         stage("sonar_quality_check"){
