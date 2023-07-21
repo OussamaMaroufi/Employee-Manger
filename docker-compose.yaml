@@ -13,6 +13,9 @@ services:
 
   # Spring Boot app container
   app:
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: employees
     container_name: employees-spring
     restart: always
