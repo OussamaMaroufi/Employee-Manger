@@ -3,60 +3,54 @@ pipeline{
 
     stages{
 
-       stage("sonar_quality_check"){
+        stage("sonar_quality_check"){
             steps{
                 script{
-                   sh "mvn --version"
-
-
+                    sh "mvn --version"
                 }
             }
-
         }
 
-    stage("Build project"){
-       steps {
-
-            script{
-                echo 'Hello, Maven'
-
-            }
-        }
-    }
-
-    stage("Upload jar to Nexus"){
-        steps{
-            script{
-                echo "Upload Jar to nexus"
-        }
-    }
-    }
-
-    stage('Build docker image'){
-            steps{
+        stage("Build project"){
+            steps {
                 script{
-                   echo "Build docker Image"
+                    echo 'Hello, Maven'
                 }
             }
-    }
+        }
 
-    stage('Push image to Hub'){
+        stage("Upload jar to Nexus"){
             steps{
                 script{
-                echo "Push to docker hub"
+                    echo "Upload Jar to nexus"
+                }
             }
         }
-    stage("Deploy The Application"){
-        steps{
-            script{
-                echo "App deployed successfuly"
+
+        stage('Build docker image'){
+            steps{
+                script{
+                    echo "Build docker Image"
+                }
+            }
+        }
+
+        stage('Push image to Hub'){
+            steps{
+                script{
+                    echo "Push to docker hub"
+                }
+            }
+        }
+
+        stage("Deploy The Application"){
+            steps{
+                script{
+                    echo "App deployed successfully"
+                }
             }
         }
     }
-    }
-
-
-
 
     post{
         always{
